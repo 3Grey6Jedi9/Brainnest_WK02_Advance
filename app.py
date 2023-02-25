@@ -1,12 +1,14 @@
 import os
 import schedule
 from email.message import EmailMessage
+import google
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 import google.auth
 import google.auth.transport.requests
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
+from key import api_key_file
 
 
 
@@ -14,27 +16,16 @@ from googleapiclient.discovery import build
 # Set up the email message
 msg = EmailMessage()
 msg['Subject'] = 'Test Email'
-msg['From'] = 'intersum369@gmail.com'
-msg['To'] = 'danieltarancon@gmail.com'
+msg['From'] = 'danieltarancon@gmail.com'
+msg['To'] = 'intersum369@gmail.com'
 msg.set_content('This is a test email sent from Python.')
 
 
 # Connecting with the server
-def authenticate_gmail_api(api_key):
+def authenticate_gmail_api(api_key_file):
     # Set up the OAuth 2.0 flow
-    flow = InstalledAppFlow.from_client_config(
-        {
-            "web": {
-                "client_id": "",
-                "project_id": "",
-                "auth_uri": "",
-                "token_uri": "",
-                "auth_provider_x509_cert_url": "",
-                "client_secret": api_key,
-                "redirect_uris": [],
-                "javascript_origins": [],
-            }
-        },
+    flow = InstalledAppFlow.from_client_secrets_file(
+        api_key_file,
         scopes=['https://www.googleapis.com/auth/gmail.send']
     )
     credentials = flow.run_local_server(port=0)
@@ -44,8 +35,7 @@ def authenticate_gmail_api(api_key):
     return service
 
 
-api_key = 'your_api_key_here'
-service = authenticate_gmail_api(api_key)
+service = authenticate_gmail_api(api_key_file)
 
 
 
