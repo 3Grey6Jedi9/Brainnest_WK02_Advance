@@ -17,8 +17,8 @@ import base64
 # Set up the email message
 msg = EmailMessage()
 msg['Subject'] = 'Test Email'
-msg['From'] = 'danieltarancon@gmail.com'
-msg['To'] = 'intersum369@gmail.com'
+msg['From'] = input('Enter your name please: ')
+msg['To'] = input('Enter the email of the recipient please: ')
 msg.set_content('This is a test email sent from Python.')
 
 
@@ -68,7 +68,12 @@ def send_email(service, message):
         message = None
     return message
 
-send_email(service, raw_msg)
+
+
+
+if __name__ == '__main__':
+    send_email(service, raw_msg)
+
 
 
 
