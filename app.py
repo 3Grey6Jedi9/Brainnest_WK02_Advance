@@ -64,7 +64,7 @@ def auto_email(useful_data):
     for recipient in recipients:
         msg = EmailMessage()
         msg['Subject'] = 'Test Email'
-        msg['From'] = 'danieltarancon@gmail.com'
+        msg['From'] = "User's email"
         msg['To'] = recipient
         msg.set_content('This is a test email sent from Python.')
 
