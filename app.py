@@ -13,19 +13,8 @@ import base64
 
 
 
+recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
 
-# Set up the email message
-msg = EmailMessage()
-msg['Subject'] = 'Test Email'
-msg['From'] = input('Enter your name please: ')
-msg['To'] = input('Enter the email of the recipient please: ')
-msg.set_content('This is a test email sent from Python.')
-
-
-# Converting the EmailMessage to a format compatible with the Gmail API
-mime_msg = msg.as_string().encode("utf-8")
-b64_msg = base64.urlsafe_b64encode(mime_msg).decode("utf-8")
-raw_msg = {"raw": b64_msg}
 
 
 # Connecting with the server
@@ -53,9 +42,6 @@ def authenticate_gmail_api(useful_data):
     return service
 
 
-service = authenticate_gmail_api(useful_data)
-
-
 
 
 # Call the Gmail API to send the message
@@ -71,8 +57,28 @@ def send_email(service, message):
 
 
 
+def auto_email(useful_data):
+
+    service = authenticate_gmail_api(useful_data)
+
+    for recipient in recipients:
+        msg = EmailMessage()
+        msg['Subject'] = 'Test Email'
+        msg['From'] = 'danieltarancon@gmail.com'
+        msg['To'] = recipient
+        msg.set_content('This is a test email sent from Python.')
+
+
+        # Converting the EmailMessage to a format compatible with the Gmail API
+        mime_msg = msg.as_string().encode("utf-8")
+        b64_msg = base64.urlsafe_b64encode(mime_msg).decode("utf-8")
+        raw_msg = {"raw": b64_msg}
+
+        send_email(service, raw_msg)
+
+
 if __name__ == '__main__':
-    send_email(service, raw_msg)
+    auto_email(useful_data)
 
 
 
