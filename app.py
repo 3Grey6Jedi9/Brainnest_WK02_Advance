@@ -132,10 +132,12 @@ def auto_email(useful_data):
 
         send_email(service, raw_msg)
 
+        logging.info(f"{datetime.datetime.now()} - email sent to {recipient}")
+
 
 
 if __name__ == '__main__':
-    schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
+    schedule.every().day.at("22:12").do(lambda: auto_email(useful_data))
 
     while True:
         schedule.run_pending()
