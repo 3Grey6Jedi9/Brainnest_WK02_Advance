@@ -19,6 +19,8 @@ current_day = datetime.datetime.now().day
 
 list_files = os.listdir(path='/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month')
 
+todays_file = ''
+
 del list_files[0]
 
 group_A = np.array([1,8,15,22,29])
@@ -30,9 +32,23 @@ group_F = group_E + 1
 group_G = group_F + 1
 
 
-#Now I just need to assign the proper file accorifn to the current day 
+if current_day in group_A:
+    todays_file = list_files[0]
+elif current_day in group_B:
+    todays_file = list_files[1]
+elif current_day in group_C:
+    todays_file = list_files[2]
+elif current_day in group_D:
+    todays_file = list_files[3]
+elif current_day in group_E:
+    todays_file = list_files[4]
+elif current_day in group_F:
+    todays_file = list_files[5]
+elif current_day in group_G:
+    todays_file = list_files[6]
 
-todays_file = ''
+
+
 
 # Connecting with the server
 def authenticate_gmail_api(useful_data):
@@ -80,12 +96,20 @@ def auto_email(useful_data):
 
     for recipient in recipients:
         msg = EmailMessage()
-        msg['Subject'] = 'Test Email'
+        msg['Subject'] = 'Super Month'
         msg['From'] = "User's email"
         msg['To'] = recipient
-        msg.set_content('This is a test email sent from Python.')
-        msg.add_attachment(todays_file)
+        msg.set_content('Let us conquer this day')
 
+
+        file_path = os.path.join(
+            '/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month',
+            todays_file)
+        with open(file_path, 'rb') as f:
+            file_data = f.read()
+            file_name = os.path.basename(file_path)
+
+        msg.add_attachment(file_data, maintype='application', subtype='jpeg')
 
         # Converting the EmailMessage to a format compatible with the Gmail API
         mime_msg = msg.as_string().encode("utf-8")
@@ -93,18 +117,16 @@ def auto_email(useful_data):
         raw_msg = {"raw": b64_msg}
 
         send_email(service, raw_msg)
-        print('i worked')
 
 
 
 if __name__ == '__main__':
-    #schedule.every().day.at("05:23").do(lambda: auto_email(useful_data))
+    schedule.every().day.at("21:47").do(lambda: auto_email(useful_data))
 
-    #while True:
-        #schedule.run_pending()
-        #time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
-    print(group_A)
 
 
 
