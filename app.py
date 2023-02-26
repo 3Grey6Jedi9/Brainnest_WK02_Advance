@@ -12,7 +12,6 @@ from key import useful_data
 import base64
 
 
-
 recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
 
 
@@ -77,8 +76,15 @@ def auto_email(useful_data):
         send_email(service, raw_msg)
 
 
+
+
 if __name__ == '__main__':
-    auto_email(useful_data)
+    #schedule.every().day.at("6:00").do(lambda: auto_email(useful_data))
+    schedule.every().day.at("17:07").do(lambda: auto_email(useful_data))
+
+
+
+
 
 
 
