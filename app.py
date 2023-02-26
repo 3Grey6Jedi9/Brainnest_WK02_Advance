@@ -12,6 +12,11 @@ from key import useful_data
 import base64
 import time, datetime
 import numpy as np
+import logging
+
+#Setting up logging to a file
+logging.basicConfig(filename='email_log.txt', level=logging.INFO, format='%(asctime)s %(message)s')
+
 
 recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
 
