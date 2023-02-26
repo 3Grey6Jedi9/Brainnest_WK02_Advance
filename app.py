@@ -23,29 +23,36 @@ del list_files[0]
 
 todays_file = ''
 
-group_A = np.array([1,8,15,22,29])
-group_B = group_A + 1
-group_C = group_B + 1
-group_D = np.delete(group_C,4) + 1
-group_E = group_D + 1
-group_F = group_E + 1
-group_G = group_F + 1
+
+def file_day_assign(current_day, list_files):
+
+    group_A = np.array([1,8,15,22,29])
+    group_B = group_A + 1
+    group_C = group_B + 1
+    group_D = np.delete(group_C,4) + 1
+    group_E = group_D + 1
+    group_F = group_E + 1
+    group_G = group_F + 1
 
 
-if current_day in group_A:
-    todays_file = list_files[0]
-elif current_day in group_B:
-    todays_file = list_files[1]
-elif current_day in group_C:
-    todays_file = list_files[2]
-elif current_day in group_D:
-    todays_file = list_files[3]
-elif current_day in group_E:
-    todays_file = list_files[4]
-elif current_day in group_F:
-    todays_file = list_files[5]
-elif current_day in group_G:
-    todays_file = list_files[6]
+    if current_day in group_A:
+        todays_file = list_files[0]
+    elif current_day in group_B:
+        todays_file = list_files[1]
+    elif current_day in group_C:
+        todays_file = list_files[2]
+    elif current_day in group_D:
+        todays_file = list_files[3]
+    elif current_day in group_E:
+        todays_file = list_files[4]
+    elif current_day in group_F:
+        todays_file = list_files[5]
+    elif current_day in group_G:
+        todays_file = list_files[6]
+
+    return todays_file
+
+
 
 
 
@@ -94,6 +101,8 @@ def auto_email(useful_data):
 
     service = authenticate_gmail_api(useful_data)
 
+    todays_file = file_day_assign(current_day, list_files)
+
     for recipient in recipients:
         msg = EmailMessage()
         msg['Subject'] = 'Super Month'
@@ -121,8 +130,7 @@ def auto_email(useful_data):
 
 
 if __name__ == '__main__':
-    #schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
-    schedule.every(20).seconds.do(lambda: auto_email(useful_data))
+    schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
 
     while True:
         schedule.run_pending()
