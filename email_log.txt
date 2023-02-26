@@ -1,2 +1,6 @@
 2023-02-26 22:04:06,950 "GET /?state=eqPifeSe162LRkFaOnIJ55JIKIdHwS&code=4/0AWtgzh4FuERz1O7vTkUzzNMtRIs_dJTHyKvX0fXz5YF2iT0aTtx9hdidnIwKW1rabp15JA&scope=https://www.googleapis.com/auth/gmail.send HTTP/1.1" 200 65
 2023-02-26 22:04:07,344 file_cache is only supported with oauth2client<4.0.0
+2023-02-26 22:12:07,088 "GET /?state=PfvkBz8IjTbpOWmXjjHfeySkp0NS3U&code=4/0AWtgzh5FW6BSvSZcp35HvbU6DlWPQvr_touUUKZvPLaWQPAPCEdAkgl0wm_4iqiWOxCvww&scope=https://www.googleapis.com/auth/gmail.send HTTP/1.1" 200 65
+2023-02-26 22:12:07,527 file_cache is only supported with oauth2client<4.0.0
+2023-02-26 22:12:09,226 2023-02-26 22:12:09.226217 - email sent to intersum369@gmail.com
+2023-02-26 22:12:10,885 2023-02-26 22:12:10.885418 - email sent to danieltarancon@gmail.com
