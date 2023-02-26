@@ -10,11 +10,29 @@ from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 from key import useful_data
 import base64
-import time
+import time, datetime
+import numpy as np
 
 recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
 
+current_day = datetime.datetime.now().day
 
+list_files = os.listdir(path='/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month')
+
+del list_files[0]
+
+group_A = np.array([1,8,15,22,29])
+group_B = group_A + 1
+group_C = group_B + 1
+group_D = np.delete(group_C,4) + 1
+group_E = group_D + 1
+group_F = group_E + 1
+group_G = group_F + 1
+
+
+#Now I just need to assign the proper file accorifn to the current day 
+
+todays_file = ''
 
 # Connecting with the server
 def authenticate_gmail_api(useful_data):
@@ -66,6 +84,7 @@ def auto_email(useful_data):
         msg['From'] = "User's email"
         msg['To'] = recipient
         msg.set_content('This is a test email sent from Python.')
+        msg.add_attachment(todays_file)
 
 
         # Converting the EmailMessage to a format compatible with the Gmail API
@@ -79,13 +98,13 @@ def auto_email(useful_data):
 
 
 if __name__ == '__main__':
-    schedule.every().day.at("05:23").do(lambda: auto_email(useful_data))
+    #schedule.every().day.at("05:23").do(lambda: auto_email(useful_data))
 
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    #while True:
+        #schedule.run_pending()
+        #time.sleep(1)
 
-
+    print(group_A)
 
 
 
