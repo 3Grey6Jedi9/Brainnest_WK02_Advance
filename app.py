@@ -121,7 +121,8 @@ def auto_email(useful_data):
 
 
 if __name__ == '__main__':
-    schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
+    #schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
+    schedule.every(20).seconds.do(lambda: auto_email(useful_data))
 
     while True:
         schedule.run_pending()
