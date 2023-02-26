@@ -19,9 +19,9 @@ current_day = datetime.datetime.now().day
 
 list_files = os.listdir(path='/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month')
 
-todays_file = ''
-
 del list_files[0]
+
+todays_file = ''
 
 group_A = np.array([1,8,15,22,29])
 group_B = group_A + 1
@@ -121,7 +121,7 @@ def auto_email(useful_data):
 
 
 if __name__ == '__main__':
-    schedule.every().day.at("21:47").do(lambda: auto_email(useful_data))
+    schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
 
     while True:
         schedule.run_pending()
