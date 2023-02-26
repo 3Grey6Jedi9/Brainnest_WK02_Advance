@@ -10,7 +10,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 from key import useful_data
 import base64
-
+import time
 
 recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
 
@@ -74,13 +74,18 @@ def auto_email(useful_data):
         raw_msg = {"raw": b64_msg}
 
         send_email(service, raw_msg)
-
+        print('i worked')
 
 
 
 if __name__ == '__main__':
-    #schedule.every().day.at("6:00").do(lambda: auto_email(useful_data))
-    schedule.every().day.at("17:07").do(lambda: auto_email(useful_data))
+    schedule.every().day.at("17:23").do(lambda: auto_email(useful_data))
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+
 
 
 
