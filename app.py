@@ -155,7 +155,7 @@ if __name__ == '__main__':
             print(f'{err}')
         else:
             if set_up == 'y':
-                schedule.every().day.at("22:12").do(lambda: auto_email(useful_data))
+                schedule.every().day.at("05:33").do(lambda: auto_email(useful_data))
 
                 while True:
                     schedule.run_pending()
