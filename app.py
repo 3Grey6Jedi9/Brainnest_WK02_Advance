@@ -8,7 +8,7 @@ import google.auth
 import google.auth.transport.requests
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
-from key import useful_data
+#from key import useful_data
 import base64
 import time, datetime
 import numpy as np
@@ -18,7 +18,7 @@ import logging
 logging.basicConfig(filename='email_log.txt', level=logging.INFO, format='%(asctime)s %(message)s')
 
 
-recipients = ['intersum369@gmail.com','danieltarancon@gmail.com']
+recipients = []
 
 current_day = datetime.datetime.now().day
 
@@ -137,11 +137,32 @@ def auto_email(useful_data):
 
 
 if __name__ == '__main__':
-    schedule.every().day.at("22:12").do(lambda: auto_email(useful_data))
+    set_up = ''
+    instructions = '''\n 1) You must get a client secret ID OAth 2.0.\n
+     2) Then having downloaded the json file, create a file called key.py. In that file you will import json and you
+     will put that data into a variable (secret_data = json.load(f)).
+     Eventually you will get the data requested, in this case --> useful_data = secrect_data['installed'].\n
+     3) Indicate the inside the list recipients the emails that will receive the data.\n
+     4) Now you will be able to run succesfully the app.\n
+     5) Before I forget, once you run the app you will need to grant permission to run it since this app in the testing phase.\n'''
+    print(instructions)
+    while set_up != 'y' or ValueError:
+        try:
+            set_up = input('Did you set up the app [enter "y" for yes or "n" for no]? ')
+            if set_up != 'y' or set_up != 'n':
+                raise ValueError('You must enter "y" or "n", try again please')
+        except ValueError as err:
+            print(f'{err}')
+        else:
+            if set_up == 'y':
+                schedule.every().day.at("22:12").do(lambda: auto_email(useful_data))
 
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+                while True:
+                    schedule.run_pending()
+                    time.sleep(1)
+            else:
+                continue
+
 
 
 
