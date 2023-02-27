@@ -13,4 +13,3 @@ Here are the steps you can take to automate this process:
     Use the schedule library to schedule the script to run daily at a specific time.
 
     You can also set up a log file to keep track of the emails that have been sent and any errors that may have occurred during the email sending process. '''
-
