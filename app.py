@@ -115,7 +115,6 @@ def auto_email(useful_data):
         msg['To'] = recipient
         msg.set_content('Let us conquer this day')
 
-
         file_path = os.path.join(
             '/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month',
             todays_file)
