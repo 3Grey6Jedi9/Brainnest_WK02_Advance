@@ -138,7 +138,7 @@ def auto_email(useful_data):
 
 if __name__ == '__main__':
     set_up = ''
-    instructions = '''\n 1) You must get a client secret ID OAth 2.0.\n
+    instructions = '''\n     1) You must get a client secret ID OAth 2.0.\n
      2) Then having downloaded the json file, create a file called key.py. In that file you will import json and you
      will put that data into a variable (secret_data = json.load(f)).
      Eventually you will get the data requested, in this case --> useful_data = secrect_data['installed'].\n
@@ -148,8 +148,8 @@ if __name__ == '__main__':
     print(instructions)
     while set_up != 'y' or ValueError:
         try:
-            set_up = input('Did you set up the app [enter "y" for yes or "n" for no]? ')
-            if set_up != 'y' or set_up != 'n':
+            set_up = input('Did you set up the app [enter "y" for yes or "n" for no]? ').lower()
+            if set_up != 'y' and set_up != 'n':
                 raise ValueError('You must enter "y" or "n", try again please')
         except ValueError as err:
             print(f'{err}')
@@ -161,7 +161,11 @@ if __name__ == '__main__':
                     schedule.run_pending()
                     time.sleep(1)
             else:
+                print(instructions)
                 continue
+
+
+
 
 
 
