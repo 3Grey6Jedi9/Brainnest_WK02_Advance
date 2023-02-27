@@ -22,7 +22,7 @@ recipients = []
 
 current_day = datetime.datetime.now().day
 
-list_files = os.listdir(path='/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/super_month')
+list_files = os.listdir(path='/Users/danielmulatarancon/Desktop/Documents/HACKING TIME/Brainnest /Week 02/Advance Tasks/Brainnest_WK02_Advance/super_month')
 
 del list_files[0]
 
